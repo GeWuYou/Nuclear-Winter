@@ -11,8 +11,15 @@ config_version=5
 [application]
 
 config/name="核冬天"
+run/main_scene="uid://cjt5140650441"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
 
 [file_customization]
 

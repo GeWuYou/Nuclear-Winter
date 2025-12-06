@@ -1,4 +1,10 @@
-[gd_scene format=3 uid="uid://cjt5140650441"]
+[gd_scene load_steps=4 format=3 uid="uid://cjt5140650441"]
+
+[ext_resource type="Script" uid="uid://ee6k8456a5y0" path="res://scenes/main_menu/main_menu.gd" id="1_0ebjn"]
+[ext_resource type="Theme" uid="uid://5g1iuifh5s84" path="res://resources/main_menu.tres" id="1_fsom3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1b6gl"]
+font_size = 84
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -7,3 +13,61 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_0ebjn")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="blank" type="Control" parent="BoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+
+[node name="blank" type="Control" parent="BoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="BoxContainer/VBoxContainer2"]
+layout_direction = 2
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "标题"
+label_settings = SubResource("LabelSettings_1b6gl")
+vertical_alignment = 1
+
+[node name="blank2" type="Control" parent="BoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="start" type="Button" parent="BoxContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_fsom3")
+text = "开始游戏"
+
+[node name="setting" type="Button" parent="BoxContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_fsom3")
+text = "设置"
+
+[node name="quit" type="Button" parent="BoxContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_fsom3")
+text = "退出"
+
+[connection signal="pressed" from="BoxContainer/VBoxContainer2/VBoxContainer/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="BoxContainer/VBoxContainer2/VBoxContainer/setting" to="." method="_on_setting_pressed"]
+[connection signal="pressed" from="BoxContainer/VBoxContainer2/VBoxContainer/quit" to="." method="_on_quit_pressed"]
