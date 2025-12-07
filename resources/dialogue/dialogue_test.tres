@@ -1,18 +1,22 @@
-[gd_resource type="Resource" script_class="DialogueGroup" load_steps=5 format=3 uid="uid://ds0ugjuo81i82"]
+[gd_resource type="Resource" script_class="DialogueGroup" load_steps=7 format=3 uid="uid://ds0ugjuo81i82"]
 
 [ext_resource type="Script" uid="uid://vk78apdyiuiu" path="res://global/dialogue/dialogue.gd" id="1_fkt8q"]
+[ext_resource type="Texture2D" uid="uid://2tr56nk5q1hw" path="res://icon.svg" id="2_qri7n"]
 [ext_resource type="Script" uid="uid://jnhcgj56ma0g" path="res://global/dialogue/dialogue_group.gd" id="2_w1d6m"]
+[ext_resource type="Texture2D" uid="uid://77yplu4s5vn8" path="res://assets/matrrial/test/1765023132473.jpg" id="3_fvmgg"]
 
 [sub_resource type="Resource" id="Resource_fkt8q"]
 script = ExtResource("1_fkt8q")
 character_name = "pickled rick"
 content = "i`m pickled rick"
+avatar = ExtResource("2_qri7n")
 metadata/_custom_type_script = "uid://vk78apdyiuiu"
 
 [sub_resource type="Resource" id="Resource_w1d6m"]
 script = ExtResource("1_fkt8q")
 character_name = "pickled rick"
 content = "Wubba dub dub dub!!!"
+avatar = ExtResource("3_fvmgg")
 metadata/_custom_type_script = "uid://vk78apdyiuiu"
 
 [resource]
