@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DialogueGroup" load_steps=5 format=3 uid="uid://ds0ugjuo81i82"]
+
+[ext_resource type="Script" uid="uid://vk78apdyiuiu" path="res://global/dialogue/dialogue.gd" id="1_fkt8q"]
+[ext_resource type="Script" uid="uid://jnhcgj56ma0g" path="res://global/dialogue/dialogue_group.gd" id="2_w1d6m"]
+
+[sub_resource type="Resource" id="Resource_fkt8q"]
+script = ExtResource("1_fkt8q")
+character_name = "pickled rick"
+content = "i`m pickled rick"
+metadata/_custom_type_script = "uid://vk78apdyiuiu"
+
+[sub_resource type="Resource" id="Resource_w1d6m"]
+script = ExtResource("1_fkt8q")
+character_name = "pickled rick"
+content = "Wubba dub dub dub!!!"
+metadata/_custom_type_script = "uid://vk78apdyiuiu"
+
+[resource]
+script = ExtResource("2_w1d6m")
+dialogue_list = Array[ExtResource("1_fkt8q")]([SubResource("Resource_fkt8q"), SubResource("Resource_w1d6m")])
+metadata/_custom_type_script = "uid://jnhcgj56ma0g"
