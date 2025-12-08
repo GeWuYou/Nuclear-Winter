@@ -1,4 +1,4 @@
-﻿name: Release on Tag
+name: Release on Tag
 
 # 触发条件：当有标签被推送到仓库时触发该工作流。
 # 支持任意格式的标签名，例如 `1.0.0` 或 `v1.0.0`。
@@ -161,7 +161,7 @@ jobs:
       # 将下载下来的各平台构建产物分别打包成 zip 文件
       - name: Zip Linux artifact
         run: |
-          ART_DIR="build-artifacts/Slay-the-Spire-Like-linux"
+          ART_DIR="build-artifacts/${{ env.EXPORT_NAME }}-linux"
           ZIP_PATH="${ART_DIR}.zip"
           if [ -d "$ART_DIR" ]; then
             echo "Zipping $ART_DIR -> $ZIP_PATH"
@@ -173,7 +173,7 @@ jobs:
 
       - name: Zip macOS artifact
         run: |
-          ART_DIR="build-artifacts/Slay-the-Spire-Like-macOS"
+          ART_DIR="build-artifacts/${{ env.EXPORT_NAME }}-macOS"
           ZIP_PATH="${ART_DIR}.zip"
           if [ -d "$ART_DIR" ]; then
             echo "Zipping $ART_DIR -> $ZIP_PATH"
@@ -185,7 +185,7 @@ jobs:
 
       - name: Zip Windows artifact
         run: |
-          ART_DIR="build-artifacts/Slay-the-Spire-Like-windows"
+          ART_DIR="build-artifacts/${{ env.EXPORT_NAME }}-windows"
           ZIP_PATH="${ART_DIR}.zip"
           if [ -d "$ART_DIR" ]; then
             echo "Zipping $ART_DIR -> $ZIP_PATH"
@@ -200,8 +200,8 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: build-artifacts/Slay-the-Spire-Like-linux.zip
-          asset_name: Slay-the-Spire-Like-linux.zip
+          asset_path: build-artifacts/${{ env.EXPORT_NAME }}-linux.zip
+          asset_name: ${{ env.EXPORT_NAME }}-linux.zip
           asset_content_type: application/zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -210,8 +210,8 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: build-artifacts/Slay-the-Spire-Like-macOS.zip
-          asset_name: Slay-the-Spire-Like-macOS.zip
+          asset_path: build-artifacts/${{ env.EXPORT_NAME }}-macOS.zip
+          asset_name: ${{ env.EXPORT_NAME }}-macOS.zip
           asset_content_type: application/zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -220,8 +220,8 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: build-artifacts/Slay-the-Spire-Like-windows.zip
-          asset_name: Slay-the-Spire-Like-windows.zip
+          asset_path: build-artifacts/${{ env.EXPORT_NAME }}-windows.zip
+          asset_name: ${{ env.EXPORT_NAME }}-windows.zip
           asset_content_type: application/zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
