@@ -21,7 +21,7 @@ on:
 # - EXPORT_NAME：游戏项目的输出文件名前缀。
 env:
   GODOT_VERSION: 4.5.1
-  EXPORT_NAME: Slay-the-Spire-Like
+  EXPORT_NAME: Nuclear-Winter
 
 # 定义两个作业任务：
 # 1. export-windows-linux：负责构建 Windows 和 Linux 平台版本；

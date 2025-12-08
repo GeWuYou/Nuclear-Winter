@@ -12,6 +12,8 @@ jobs:
     name: Auto Increment Version and Create Tag
     runs-on: ubuntu-latest
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true)
+    permissions:
+      contents: write
     
     steps:
       - name: Checkout code
@@ -73,8 +75,8 @@ jobs:
           # 创建注释标签
           git tag -a "${{ steps.get_next_version.outputs.new_tag }}" -m "Auto-generated tag: ${{ steps.get_next_version.outputs.new_tag }}"
           
-          # 推送标签到远程仓库
-          git push "https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git" "${{ steps.get_next_version.outputs.new_tag }}"
+          # 使用 GITHUB_TOKEN 推送标签到远程仓库
+          git push "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:main --tags
 
       - name: Print version info
         if: steps.check_skip.outputs.skip_tag == 'false'
