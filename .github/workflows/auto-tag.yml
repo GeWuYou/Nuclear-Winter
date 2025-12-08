@@ -21,6 +21,7 @@ jobs:
         with:
           lfs: true
           fetch-depth: 0 # 获取全部历史记录以查找现有标签
+          persist-credentials: false
 
       - name: Check for skip keyword
         id: check_skip
@@ -66,18 +67,25 @@ jobs:
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
           echo "new_tag=$NEW_TAG" >> $GITHUB_OUTPUT
 
-      - name: Create tag and push
+      - name: Create tag and push (using PAT)
         if: steps.check_skip.outputs.skip_tag == 'false'
+        env:
+          PAT: ${{ secrets.PAT_TOKEN }}
+          REPO: ${{ github.repository }}
+          NEW_TAG: ${{ steps.get_next_version.outputs.new_tag }}
         run: |
+          set -e
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          
-          # 创建注释标签
-          git tag -a "${{ steps.get_next_version.outputs.new_tag }}" -m "Auto-generated tag: ${{ steps.get_next_version.outputs.new_tag }}"
-          
-          # 使用 GITHUB_TOKEN 推送标签到远程仓库
-          git push "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:main --tags
 
+          echo "Creating annotated tag $NEW_TAG"
+          git tag -a "$NEW_TAG" -m "Auto-generated tag: $NEW_TAG"
+
+          # 推送单个 tag，使用 PAT 作为 HTTPS token
+          echo "Pushing tag $NEW_TAG to origin using PAT"
+          git push "https://x-access-token:${PAT}@github.com/${REPO}.git" "refs/tags/${NEW_TAG}"
+      
+      
       - name: Print version info
         if: steps.check_skip.outputs.skip_tag == 'false'
         run: |
