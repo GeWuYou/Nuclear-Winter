@@ -74,7 +74,7 @@ jobs:
           git tag -a "${{ steps.get_next_version.outputs.new_tag }}" -m "Auto-generated tag: ${{ steps.get_next_version.outputs.new_tag }}"
           
           # 推送标签到远程仓库
-          git push origin "${{ steps.get_next_version.outputs.new_tag }}"
+          git push "https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git" "${{ steps.get_next_version.outputs.new_tag }}"
 
       - name: Print version info
         if: steps.check_skip.outputs.skip_tag == 'false'
