@@ -1,0 +1,89 @@
+name: Auto Increment Version and Tag
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+    types: [ closed ]
+
+jobs:
+  auto-tag:
+    name: Auto Increment Version and Create Tag
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true)
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 0 # 获取全部历史记录以查找现有标签
+
+      - name: Check for skip keyword
+        id: check_skip
+        run: |
+          # 检查最近一次提交信息是否包含跳过关键词
+          LAST_COMMIT_MSG=$(git log -1 --pretty=format:"%s")
+          if [[ "$LAST_COMMIT_MSG" == *"[skip release]"* ]] || [[ "$LAST_COMMIT_MSG" == *"[no tag]"* ]]; then
+            echo "skip_tag=true" >> $GITHUB_OUTPUT
+            echo "Skipping tag creation due to skip keyword in commit message"
+          else
+            echo "skip_tag=false" >> $GITHUB_OUTPUT
+            echo "No skip keyword found, proceeding with tag creation"
+          fi
+          echo "Last commit message: $LAST_COMMIT_MSG"
+
+      - name: Get next version
+        id: get_next_version
+        if: steps.check_skip.outputs.skip_tag == 'false'
+        run: |
+          # 获取最新的标签版本号，如果没有标签则默认为 0.0.0
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          
+          # 移除可能存在的 v 前缀
+          VERSION_NUM=${LATEST_TAG#v}
+          
+          # 解析主版本号、次版本号和修订号
+          MAJOR=$(echo $VERSION_NUM | cut -d. -f1)
+          MINOR=$(echo $VERSION_NUM | cut -d. -f2)
+          PATCH=$(echo $VERSION_NUM | cut -d. -f3)
+          
+          # 递增修订号
+          PATCH=$((PATCH + 1))
+          
+          # 构造新版本号
+          NEW_VERSION="$MAJOR.$MINOR.$PATCH"
+          NEW_TAG="v$NEW_VERSION"
+          
+          echo "latest_tag=$LATEST_TAG"
+          echo "new_version=$NEW_VERSION"
+          echo "new_tag=$NEW_TAG"
+          
+          echo "latest_tag=$LATEST_TAG" >> $GITHUB_OUTPUT
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "new_tag=$NEW_TAG" >> $GITHUB_OUTPUT
+
+      - name: Create tag and push
+        if: steps.check_skip.outputs.skip_tag == 'false'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          # 创建注释标签
+          git tag -a "${{ steps.get_next_version.outputs.new_tag }}" -m "Auto-generated tag: ${{ steps.get_next_version.outputs.new_tag }}"
+          
+          # 推送标签到远程仓库
+          git push origin "${{ steps.get_next_version.outputs.new_tag }}"
+
+      - name: Print version info
+        if: steps.check_skip.outputs.skip_tag == 'false'
+        run: |
+          echo "Previous tag was: ${{ steps.get_next_version.outputs.latest_tag }}"
+          echo "New tag created: ${{ steps.get_next_version.outputs.new_tag }}"
+          echo "Version number: ${{ steps.get_next_version.outputs.new_version }}"
+
+      - name: Print skip info
+        if: steps.check_skip.outputs.skip_tag == 'true'
+        run: |
+          echo "Tag creation skipped due to commit message containing skip keyword"

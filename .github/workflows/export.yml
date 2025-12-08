@@ -1,0 +1,152 @@
+# 工作流名称：Export Game
+# 功能描述：该工作流用于在代码推送到主分支或发起 PR 时，
+# 自动导出 Godot 游戏项目到多个平台（Windows、Linux 和 macOS）。
+# 支持手动触发（workflow_dispatch），并上传构建产物作为 GitHub Artifacts。
+
+name: Export Game
+
+# 触发条件定义：
+# - 当向 main 或 master 分支推送代码时自动运行；
+# - 当针对 main 或 master 分支创建 Pull Request 时运行；
+# - 允许通过 GitHub UI 手动触发。
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+# 环境变量定义：
+# - GODOT_VERSION：指定使用的 Godot 版本号；
+# - EXPORT_NAME：游戏项目的输出文件名前缀。
+env:
+  GODOT_VERSION: 4.5.1
+  EXPORT_NAME: Slay-the-Spire-Like
+
+# 定义两个作业任务：
+# 1. export-windows-linux：负责构建 Windows 和 Linux 平台版本；
+# 2. export-macos：负责构建 macOS 平台版本。
+jobs:
+
+  # 作业名称：export-windows-linux
+  # 功能描述：使用 Ubuntu 最新环境构建 Windows 和 Linux 可执行程序，并打包成 ZIP 文件上传为 Artifact。
+  export-windows-linux:
+    name: Export Windows & Linux
+    runs-on: ubuntu-latest
+    steps:
+
+      # 步骤说明：检出源码仓库，启用 Git LFS 支持以处理大文件。
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      # 步骤说明：设置 Godot 环境，包括导入器与导出模板，以便后续进行项目构建和导出操作。
+      - name: Setup Godot (includes export templates)
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: ${{ env.GODOT_VERSION }}
+          include-importer: true
+          include-templates: true
+
+      # 步骤说明：创建用于存放各平台构建结果的目录结构。
+      - name: Create export dirs
+        run: |
+          rm -rf build || true
+          mkdir -p build/windows
+          mkdir -p build/linux
+
+      # 步骤说明：使用 Godot 命令行工具将项目导出为 Windows 桌面可执行文件。
+      # 注意：preset 名称需匹配 export_presets.cfg 中配置的内容。
+      - name: Export Windows Desktop (x86_64)
+        run: |
+          set -e
+          # The preset name must match export_presets.cfg (your preset is "Windows Desktop")
+          godot --headless --export-release "Windows Desktop" build/windows/${{ env.EXPORT_NAME }}.exe --quit
+
+      # 步骤说明：使用 Godot 将项目导出为 Linux x86_64 可执行文件。
+      - name: Export Linux (x86_64)
+        run: |
+          set -e
+          godot --headless --export-release "Linux" build/linux/${{ env.EXPORT_NAME }}.x86_64 --quit
+
+      # 上传 Windows 文件夹（GitHub 会自动压成 zip）
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.EXPORT_NAME }}-windows
+          path: build/windows/
+          if-no-files-found: error
+          retention-days: 30
+      
+      # 上传 Linux 文件夹（GitHub 会自动压成 zip）
+      - name: Upload Linux artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.EXPORT_NAME }}-linux
+          path: build/linux/
+          if-no-files-found: error
+          retention-days: 30
+
+      # 步骤说明：列出所有构建输出路径下的文件，便于调试查看构建成果。
+      - name: List build outputs (debug)
+        run: |
+          echo "=== build/ ==="
+          ls -R build || true
+
+  # 作业名称：export-macos
+  # 功能描述：使用 macOS 最新环境构建 macOS 应用包，并打包成 ZIP 文件上传为 Artifact。
+  export-macos:
+    name: Export macOS
+    runs-on: macos-latest
+    steps:
+
+      # 步骤说明：检出源码仓库，启用 Git LFS 支持以处理大文件。
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      # 步骤说明：设置 Godot 环境，包括导入器与导出模板，以便后续进行项目构建和导出操作。
+      - name: Setup Godot on macOS (includes export templates)
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: ${{ env.GODOT_VERSION }}
+          include-importer: true
+          include-templates: true
+
+      # 步骤说明：创建用于存放 macOS 构建结果的目录。
+      - name: Create macOS export dir
+        run: mkdir -p build/macos
+
+      # 步骤说明：使用 Godot 导出 macOS 应用程序包（.app）。
+      # 注意：preset 名称需匹配 export_presets.cfg 中配置的内容。
+      - name: Export macOS (.app)
+        run: |
+          set -e
+          # 使用 export_presets.cfg 中的 preset 名称 "macOS"
+          godot --headless --export-release "macOS" build/macos/${{ env.EXPORT_NAME }}.app --quit
+
+      # 步骤说明：无论是否成功都将 .app 目录压缩为 ZIP 文件。
+      - name: Zip macOS app
+        if: always()
+        run: |
+          cd build/macos || exit 0
+          if [ -d "${{ env.EXPORT_NAME }}.app" ]; then
+            zip -r ../${{ env.EXPORT_NAME }}-macOS.zip "${{ env.EXPORT_NAME }}.app"
+          else
+            echo ".app not found, skipping zip"
+          fi
+
+      # 步骤说明：列出所有构建输出路径下的文件，便于调试查看构建成果。
+      - name: List macOS build outputs
+        run: ls -R build/ || true
+
+      # 步骤说明：将 macOS 的 ZIP 构建产物上传为 GitHub Actions Artifact。
+      - name: Upload macOS artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.EXPORT_NAME }}-macOS
+          path: build/${{ env.EXPORT_NAME }}-macOS.zip
+          if-no-files-found: error
+          retention-days: 30
