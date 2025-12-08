@@ -21,6 +21,10 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 
+[dotnet]
+
+project/assembly_name="核冬天"
+
 [file_customization]
 
 folder_colors={
@@ -34,3 +38,7 @@ folder_colors={
 "res://scenes/": "green",
 "res://shader/": "teal"
 }
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true
