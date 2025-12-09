@@ -22,10 +22,15 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
-"test_character": "res://resources/dialogue/test_character.dch"
+"test_character": "res://resources/dialogue/character/test_character.dch",
+"天降_女3": "res://resources/dialogue/character/天降_女3.dch",
+"妹妹_女1": "res://resources/dialogue/character/妹妹_女1.dch",
+"男主": "res://resources/dialogue/character/男主.dch",
+"青梅_女2": "res://resources/dialogue/character/青梅_女2.dch"
 }
 directories/dtl_directory={
-"test_timeline": "res://resources/dialogue/test_timeline.dtl"
+"test_timeline": "res://resources/dialogue/timeline/test_timeline.dtl",
+"序章1": "res://resources/dialogue/timeline/序章/序章1.dtl"
 }
 layout/style_directory={
 "": "res://resources/dialogue/style/style.tres",
@@ -35,6 +40,40 @@ glossary/default_case_sensitive=true
 layout/style_list=["res://resources/dialogue/style/style.tres"]
 layout/default_style="res://resources/dialogue/style/style.tres"
 variables={}
+extensions_folder="res://addons/dialogic_additions"
+text/letter_speed=0.05
+text/initial_text_reveal_skippable=true
+text/text_reveal_skip_delay=0.1
+text/advance_delay=0.1
+text/autoadvance_per_character_delay=0.1
+text/autoadvance_ignored_characters_enabled=true
+animations/join_default_length=0.5
+animations/join_default_wait=true
+animations/leave_default_length=0.5
+animations/leave_default_wait=true
+animations/cross_fade_default_length=0.5
+choices/autofocus_first=true
+choices/delay=0.2
+choices/reveal_delay=0
+choices/reveal_by_input=false
+save/autosave_delay=60.0
+save/encryption_on_exports_only=true
+text/input_action="dialogic_default_action"
+text/autopauses={}
+audio/channel_defaults={
+"": {
+"audio_bus": "",
+"fade_length": 0.0,
+"loop": false,
+"volume": 0.0
+},
+"music": {
+"audio_bus": "",
+"fade_length": 0.0,
+"loop": true,
+"volume": 0.0
+}
+}
 
 [display]
 
