@@ -1,0 +1,7 @@
+test_character: text_1
+test_character: text_2
+- 选项01
+	test_character: 选1
+- 选项02
+	test_character: 选2
+jump

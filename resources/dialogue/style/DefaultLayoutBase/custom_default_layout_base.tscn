@@ -1,6 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://do0wvegpfe6iy"]
+[gd_scene load_steps=27 format=3 uid="uid://do0wvegpfe6iy"]
 
 [ext_resource type="Script" uid="uid://yivwmkfwrvfr" path="res://addons/dialogic/Modules/DefaultLayoutParts/Base_Default/default_layout_base.gd" id="1_ifsho"]
+[ext_resource type="Script" uid="uid://ctog34kdg222q" path="res://addons/dialogic/Modules/Text/node_input.gd" id="2_1w6u4"]
+[ext_resource type="Script" uid="uid://b4xt1jihxj2hy" path="res://resources/dialogue/style/DefaultLayoutBase/text_box.gd" id="2_ric6y"]
 [ext_resource type="Script" uid="uid://bak74s0kcr0ao" path="res://addons/dialogic/Modules/Text/node_name_label.gd" id="2_t51uy"]
 [ext_resource type="Script" uid="uid://drhfq6rmdeuri" path="res://addons/dialogic/Modules/Text/node_dialog_text.gd" id="2_tofw2"]
 [ext_resource type="Texture2D" uid="uid://2tr56nk5q1hw" path="res://icon.svg" id="4_vdgkp"]
@@ -13,24 +15,66 @@
 [ext_resource type="Texture2D" uid="uid://dsgavedaul4cd" path="res://assets/matrrial/test/历史记录.png" id="11_uxwi6"]
 [ext_resource type="Texture2D" uid="uid://bvneiltiw64d1" path="res://assets/matrrial/test/快进.png" id="12_iptxc"]
 [ext_resource type="Texture2D" uid="uid://dxx3hrrvcfk5k" path="res://assets/matrrial/test/自动模式.png" id="13_qba7y"]
+[ext_resource type="Script" uid="uid://bldt7xlfum7ov" path="res://addons/dialogic/Modules/Choice/node_choice_button.gd" id="14_muvts"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1w6u4"]
+texture = ExtResource("4_vdgkp")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n7cp1"]
+texture = ExtResource("5_muvts")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d4psr"]
+texture = ExtResource("6_ric6y")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f4cqb"]
+texture = ExtResource("7_1w6u4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uxwi6"]
+texture = ExtResource("8_n7cp1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iptxc"]
+texture = ExtResource("9_d4psr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qba7y"]
+texture = ExtResource("10_f4cqb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4coyn"]
+texture = ExtResource("11_uxwi6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_semk3"]
+texture = ExtResource("12_iptxc")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_00wj4"]
+texture = ExtResource("13_qba7y")
 
 [node name="DefaultLayoutBase" type="CanvasLayer"]
 script = ExtResource("1_ifsho")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="DialogicNode_Input" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_1w6u4")
+metadata/_custom_type_script = "uid://ctog34kdg222q"
+
+[node name="文本框" type="Panel" parent="DialogicNode_Input"]
 custom_minimum_size = Vector2(1920, 360)
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -206.5
-offset_top = -144.0
-offset_right = 206.5
+offset_left = -960.0
+offset_top = -360.0
+offset_right = 960.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="DialogicNode_Input/文本框"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,19 +85,21 @@ theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 10
+script = ExtResource("2_ric6y")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogicNode_Input/文本框/MarginContainer"]
 layout_mode = 2
 
-[node name="DialogicNode_NameLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="DialogicNode_NameLabel" type="Label" parent="DialogicNode_Input/文本框/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+size_flags_vertical = 1
 theme_override_font_sizes/font_size = 32
 text = "名字"
 script = ExtResource("2_t51uy")
 metadata/_custom_type_script = "uid://bak74s0kcr0ao"
 
-[node name="DialogicNode_DialogText" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="DialogicNode_DialogText" type="RichTextLabel" parent="DialogicNode_Input/文本框/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/normal_font_size = 32
@@ -66,99 +112,133 @@ text = "文本
 script = ExtResource("2_tofw2")
 metadata/_custom_type_script = "uid://drhfq6rmdeuri"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
-z_index = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="DialogicNode_Input/文本框/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_direction = 3
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="System" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="System" type="Button" parent="DialogicNode_Input/文本框/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-texture_normal = ExtResource("4_vdgkp")
-texture_pressed = ExtResource("4_vdgkp")
-texture_hover = ExtResource("4_vdgkp")
-ignore_texture_size = true
-stretch_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_1w6u4")
 
-[node name="Qload" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Qload" type="Button" parent="DialogicNode_Input/文本框/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-texture_normal = ExtResource("5_muvts")
-texture_pressed = ExtResource("5_muvts")
-texture_hover = ExtResource("5_muvts")
-ignore_texture_size = true
-stretch_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_n7cp1")
 
-[node name="Load" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Load" type="Button" parent="DialogicNode_Input/文本框/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-texture_normal = ExtResource("6_ric6y")
-texture_pressed = ExtResource("6_ric6y")
-texture_hover = ExtResource("6_ric6y")
-ignore_texture_size = true
-stretch_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_d4psr")
 
-[node name="Qsave" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Qsave" type="Button" parent="DialogicNode_Input/文本框/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-texture_normal = ExtResource("7_1w6u4")
-texture_pressed = ExtResource("7_1w6u4")
-texture_hover = ExtResource("7_1w6u4")
-ignore_texture_size = true
-stretch_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_f4cqb")
 
-[node name="Save" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Save" type="Button" parent="DialogicNode_Input/文本框/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-texture_normal = ExtResource("8_n7cp1")
-texture_pressed = ExtResource("8_n7cp1")
-texture_hover = ExtResource("8_n7cp1")
-ignore_texture_size = true
-stretch_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_uxwi6")
 
-[node name="Next" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Next" type="Button" parent="DialogicNode_Input/文本框/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-texture_normal = ExtResource("9_d4psr")
-texture_pressed = ExtResource("9_d4psr")
-texture_hover = ExtResource("9_d4psr")
-ignore_texture_size = true
-stretch_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_iptxc")
 
-[node name="Return" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Last" type="Button" parent="DialogicNode_Input/文本框/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-texture_normal = ExtResource("10_f4cqb")
-texture_pressed = ExtResource("10_f4cqb")
-texture_hover = ExtResource("10_f4cqb")
-ignore_texture_size = true
-stretch_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_qba7y")
 
-[node name="Log" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Log" type="Button" parent="DialogicNode_Input/文本框/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-texture_normal = ExtResource("11_uxwi6")
-texture_pressed = ExtResource("11_uxwi6")
-texture_hover = ExtResource("11_uxwi6")
-ignore_texture_size = true
-stretch_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_4coyn")
 
-[node name="Skip" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Skip" type="Button" parent="DialogicNode_Input/文本框/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-texture_normal = ExtResource("12_iptxc")
-texture_pressed = ExtResource("12_iptxc")
-texture_hover = ExtResource("12_iptxc")
-ignore_texture_size = true
-stretch_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_semk3")
 
-[node name="Auto" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Auto" type="Button" parent="DialogicNode_Input/文本框/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-texture_normal = ExtResource("13_qba7y")
-texture_pressed = ExtResource("13_qba7y")
-texture_hover = ExtResource("13_qba7y")
-ignore_texture_size = true
-stretch_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_00wj4")
+
+[node name="DialogicNode_Input" type="Control" parent="DialogicNode_Input/文本框/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_1w6u4")
+metadata/_custom_type_script = "uid://ctog34kdg222q"
+
+[node name="选项" type="VBoxContainer" parent="DialogicNode_Input"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -138.5
+offset_right = 64.0
+offset_bottom = 138.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="DialogicNode_ChoiceButton" type="Button" parent="DialogicNode_Input/选项"]
+layout_mode = 2
+text = "选项1"
+script = ExtResource("14_muvts")
+metadata/_custom_type_script = "uid://bldt7xlfum7ov"
+
+[node name="DialogicNode_ChoiceButton2" type="Button" parent="DialogicNode_Input/选项"]
+layout_mode = 2
+text = "选项2"
+script = ExtResource("14_muvts")
+metadata/_custom_type_script = "uid://bldt7xlfum7ov"
+
+[node name="DialogicNode_ChoiceButton3" type="Button" parent="DialogicNode_Input/选项"]
+layout_mode = 2
+text = "选项3"
+script = ExtResource("14_muvts")
+metadata/_custom_type_script = "uid://bldt7xlfum7ov"
+
+[node name="DialogicNode_ChoiceButton4" type="Button" parent="DialogicNode_Input/选项"]
+layout_mode = 2
+text = "选项4"
+script = ExtResource("14_muvts")
+metadata/_custom_type_script = "uid://bldt7xlfum7ov"
+
+[node name="DialogicNode_ChoiceButton5" type="Button" parent="DialogicNode_Input/选项"]
+layout_mode = 2
+text = "选项5"
+script = ExtResource("14_muvts")
+metadata/_custom_type_script = "uid://bldt7xlfum7ov"
+
+[node name="DialogicNode_ChoiceButton6" type="Button" parent="DialogicNode_Input/选项"]
+layout_mode = 2
+text = "选项6"
+script = ExtResource("14_muvts")
+metadata/_custom_type_script = "uid://bldt7xlfum7ov"
+
+[node name="DialogicNode_ChoiceButton7" type="Button" parent="DialogicNode_Input/选项"]
+layout_mode = 2
+text = "选项7"
+script = ExtResource("14_muvts")
+metadata/_custom_type_script = "uid://bldt7xlfum7ov"
+
+[connection signal="pressed" from="DialogicNode_Input/文本框/MarginContainer/VBoxContainer/HBoxContainer/System" to="DialogicNode_Input/文本框/MarginContainer" method="_on_system_pressed"]
+[connection signal="pressed" from="DialogicNode_Input/文本框/MarginContainer/VBoxContainer/HBoxContainer/Qload" to="DialogicNode_Input/文本框/MarginContainer" method="_on_qload_pressed"]
+[connection signal="pressed" from="DialogicNode_Input/文本框/MarginContainer/VBoxContainer/HBoxContainer/Load" to="DialogicNode_Input/文本框/MarginContainer" method="_on_load_pressed"]
+[connection signal="pressed" from="DialogicNode_Input/文本框/MarginContainer/VBoxContainer/HBoxContainer/Qsave" to="DialogicNode_Input/文本框/MarginContainer" method="_on_qsave_pressed"]
+[connection signal="pressed" from="DialogicNode_Input/文本框/MarginContainer/VBoxContainer/HBoxContainer/Save" to="DialogicNode_Input/文本框/MarginContainer" method="_on_save_pressed"]
+[connection signal="pressed" from="DialogicNode_Input/文本框/MarginContainer/VBoxContainer/HBoxContainer/Next" to="DialogicNode_Input/文本框/MarginContainer" method="_on_next_pressed"]
+[connection signal="pressed" from="DialogicNode_Input/文本框/MarginContainer/VBoxContainer/HBoxContainer/Last" to="DialogicNode_Input/文本框/MarginContainer" method="_on_return_pressed"]
+[connection signal="pressed" from="DialogicNode_Input/文本框/MarginContainer/VBoxContainer/HBoxContainer/Log" to="DialogicNode_Input/文本框/MarginContainer" method="_on_log_pressed"]
+[connection signal="pressed" from="DialogicNode_Input/文本框/MarginContainer/VBoxContainer/HBoxContainer/Skip" to="DialogicNode_Input/文本框/MarginContainer" method="_on_skip_pressed"]
+[connection signal="pressed" from="DialogicNode_Input/文本框/MarginContainer/VBoxContainer/HBoxContainer/Auto" to="DialogicNode_Input/文本框/MarginContainer" method="_on_auto_pressed"]
