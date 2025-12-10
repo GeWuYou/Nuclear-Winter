@@ -10,12 +10,22 @@
 "style": "style",
 "suffix": ""
 },
-&"default_portrait": "",
+&"default_portrait": "test",
 &"description": "1",
 &"display_name": "Touzi",
 &"mirror": false,
 &"nicknames": ["1"],
 &"offset": Vector2(0, 0),
-&"portraits": {},
+&"portraits": {
+"test": {
+"export_overrides": {
+"image": ""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": "res://resources/dialogue/character/test/layered_portrait_test_character.tscn"
+}
+},
 &"scale": 1.0
 }

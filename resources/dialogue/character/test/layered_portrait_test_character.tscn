@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3rtqxok4xigx"]
+
+[ext_resource type="Script" uid="uid://cfwf5d8exox4f" path="res://addons/dialogic/Modules/LayeredPortrait/custom_layered_portrait.gd" id="1_uubi5"]
+[ext_resource type="Texture2D" uid="uid://3ibhs3pvv7i3" path="res://assets/matrrial/test/test_body.png" id="2_x6rsc"]
+[ext_resource type="Texture2D" uid="uid://s22ghx6fboyg" path="res://assets/matrrial/test/test_face..png" id="3_hpsca"]
+[ext_resource type="Texture2D" uid="uid://quq0arnetjp5" path="res://assets/matrrial/test/test_face_smile..png" id="4_ixsvv"]
+
+[node name="LayeredPortrait" type="CanvasGroup"]
+script = ExtResource("1_uubi5")
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("2_x6rsc")
+
+[node name="Face" type="Node2D" parent="."]
+
+[node name="ikun" type="Sprite2D" parent="Face"]
+texture = ExtResource("3_hpsca")
+
+[node name="smile" type="Sprite2D" parent="Face"]
+visible = false
+texture = ExtResource("4_ixsvv")

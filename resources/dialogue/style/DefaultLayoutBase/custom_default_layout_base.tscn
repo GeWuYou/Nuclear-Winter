@@ -128,42 +128,49 @@ theme_override_constants/separation = 10
 
 [node name="DialogicNode_ChoiceButton" type="Button" parent="选项"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "选项1"
 script = ExtResource("14_muvts")
 metadata/_custom_type_script = "uid://bldt7xlfum7ov"
 
 [node name="DialogicNode_ChoiceButton2" type="Button" parent="选项"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "选项2"
 script = ExtResource("14_muvts")
 metadata/_custom_type_script = "uid://bldt7xlfum7ov"
 
 [node name="DialogicNode_ChoiceButton3" type="Button" parent="选项"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "选项3"
 script = ExtResource("14_muvts")
 metadata/_custom_type_script = "uid://bldt7xlfum7ov"
 
 [node name="DialogicNode_ChoiceButton4" type="Button" parent="选项"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "选项4"
 script = ExtResource("14_muvts")
 metadata/_custom_type_script = "uid://bldt7xlfum7ov"
 
 [node name="DialogicNode_ChoiceButton5" type="Button" parent="选项"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "选项5"
 script = ExtResource("14_muvts")
 metadata/_custom_type_script = "uid://bldt7xlfum7ov"
 
 [node name="DialogicNode_ChoiceButton6" type="Button" parent="选项"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "选项6"
 script = ExtResource("14_muvts")
 metadata/_custom_type_script = "uid://bldt7xlfum7ov"
 
 [node name="DialogicNode_ChoiceButton7" type="Button" parent="选项"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "选项7"
 script = ExtResource("14_muvts")
 metadata/_custom_type_script = "uid://bldt7xlfum7ov"
@@ -188,9 +195,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 40
+theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 40
+theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 10
 script = ExtResource("2_ric6y")
 
