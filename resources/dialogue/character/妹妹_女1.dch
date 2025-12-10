@@ -7,15 +7,36 @@
 "prefix": "",
 "sound_mood_default": "",
 "sound_moods": {},
-"style": "",
+"style": "style",
 "suffix": ""
 },
-&"default_portrait": "",
+&"default_portrait": "立绘2",
 &"description": "",
 &"display_name": "妹妹_女1",
 &"mirror": false,
 &"nicknames": ["妹妹_女1"],
 &"offset": Vector2(0, 0),
-&"portraits": {},
+&"portraits": {
+"1/立绘1": {
+"export_overrides": {
+"image": "\"res://assets/matrrial/test/1765023132473.jpg\""
+},
+"ignore_char_scale": true,
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 0.4,
+"scene": ""
+},
+"立绘2": {
+"export_overrides": {
+"image": "\"res://assets/matrrial/test/1765023132473.jpg\""
+},
+"ignore_char_scale": true,
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 0.4,
+"scene": ""
+}
+},
 &"scale": 1.0
 }

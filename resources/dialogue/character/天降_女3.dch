@@ -10,12 +10,31 @@
 "style": "",
 "suffix": ""
 },
-&"default_portrait": "",
+&"default_portrait": "立绘1",
 &"description": "",
 &"display_name": "天降_女3",
 &"mirror": false,
 &"nicknames": ["天降_女3"],
 &"offset": Vector2(0, 0),
-&"portraits": {},
+&"portraits": {
+"立绘1": {
+"export_overrides": {
+"image": ""
+},
+"mirror": false,
+"offset": Vector2(-100, 0),
+"scale": 1,
+"scene": ""
+},
+"立绘2": {
+"export_overrides": {
+"image": ""
+},
+"mirror": false,
+"offset": Vector2(100, 0),
+"scale": 1,
+"scene": ""
+}
+},
 &"scale": 1.0
 }
