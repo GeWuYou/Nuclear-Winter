@@ -3,7 +3,21 @@ extends MarginContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	Dialogic.VAR.variable_changed.connect(_on_variable_changed)
+	var Heroine_1 = Dialogic.VAR.get_variable('Love_points.Heroine_1')
+	var Heroine_2 = Dialogic.VAR.get_variable('Love_points.Heroine_2')
+	var Heroine_3 = Dialogic.VAR.get_variable('Love_points.Heroine_3')
+	print('女一好感：',Heroine_1,'\n女二好感：',Heroine_2,'\n女三好感：',Heroine_3)
+
+func _on_variable_changed(info: Dictionary) -> void:
+	var variable_name = info.variable
+	var new_value = info.new_value
+	if variable_name == 'Love_points.Heroine_1':
+		print('女一好感现在为', new_value)
+	elif variable_name == 'Love_points.Heroine_2':
+		print('女二好感现在为', new_value)
+	elif variable_name == 'Love_points.Heroine_3':
+		print('女三好感现在为', new_value)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
