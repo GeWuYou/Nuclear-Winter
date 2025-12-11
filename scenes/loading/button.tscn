@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxg0esx3g1w38"]
+
+[ext_resource type="Script" uid="uid://cxnjt4j7w5wjv" path="res://scenes/loading/button.gd" id="1_oe802"]
+[ext_resource type="Texture2D" uid="uid://pfj6q0ey6ywu" path="res://assets/matrrial/test/4b54a365737f231edfdcfd8b07bca823.jpeg" id="1_oi2yo"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(0, 170)
+script = ExtResource("1_oe802")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(290, 0)
+layout_mode = 2
+texture = ExtResource("1_oi2yo")
+expand_mode = 3
+
+[node name="VBox" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Date" type="Label" parent="HBoxContainer/VBox"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Date"
+
+[node name="Text" type="Label" parent="HBoxContainer/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Text"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

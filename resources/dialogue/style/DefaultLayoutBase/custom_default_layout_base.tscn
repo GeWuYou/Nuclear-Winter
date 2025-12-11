@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://do0wvegpfe6iy"]
+[gd_scene load_steps=31 format=3 uid="uid://do0wvegpfe6iy"]
 
 [ext_resource type="Script" uid="uid://yivwmkfwrvfr" path="res://addons/dialogic/Modules/DefaultLayoutParts/Base_Default/default_layout_base.gd" id="1_ifsho"]
 [ext_resource type="Script" uid="uid://ctog34kdg222q" path="res://addons/dialogic/Modules/Text/node_input.gd" id="2_1w6u4"]
@@ -18,6 +18,8 @@
 [ext_resource type="Script" uid="uid://bldt7xlfum7ov" path="res://addons/dialogic/Modules/Choice/node_choice_button.gd" id="14_muvts"]
 [ext_resource type="Script" uid="uid://d0ptqnbudhkyj" path="res://addons/dialogic/Modules/Character/node_portrait_container.gd" id="17_n7cp1"]
 [ext_resource type="Resource" uid="uid://vm5he4iff3mv" path="res://resources/dialogue/character/妹妹_女1.dch" id="18_d4psr"]
+[ext_resource type="PackedScene" uid="uid://ccjkjlabfwqsb" path="res://scenes/loading/loading.tscn" id="20_iptxc"]
+[ext_resource type="PackedScene" uid="uid://bakr3c1avvrkp" path="res://scenes/saving/saving.tscn" id="20_uxwi6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1w6u4"]
 texture = ExtResource("4_vdgkp")
@@ -288,6 +290,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_1w6u4")
 metadata/_custom_type_script = "uid://ctog34kdg222q"
+
+[node name="Loading" parent="." instance=ExtResource("20_iptxc")]
+visible = false
+
+[node name="Saving" parent="." instance=ExtResource("20_uxwi6")]
+visible = false
 
 [connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/System" to="文本框/MarginContainer" method="_on_system_pressed"]
 [connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/Qload" to="文本框/MarginContainer" method="_on_qload_pressed"]
