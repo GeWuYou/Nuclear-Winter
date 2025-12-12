@@ -5,6 +5,8 @@
 
 [node name="Button" type="Button"]
 custom_minimum_size = Vector2(0, 170)
+offset_right = 800.0
+offset_bottom = 170.0
 script = ExtResource("1_oe802")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -36,5 +38,6 @@ text = "Date"
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Text"
+clip_text = true
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

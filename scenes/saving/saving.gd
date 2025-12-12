@@ -9,6 +9,7 @@ var save_pages: Array[Array] = []  # 每个元素是一个页面的按钮数组
 var total_buttons_per_page: int = 10
 var total_pages: int = 6
 var current_slot_name:String = 'slot_null'
+var previous_visible: bool = false
 
 func _ready() -> void:
 	# 自动查找所有页面和按钮
@@ -16,6 +17,16 @@ func _ready() -> void:
 	
 	# 批量连接所有按钮信号
 	batch_connect_all_buttons()
+	
+	#更新按钮显示
+	update_save_slots_display()
+
+func _process(delta: float) -> void:
+	if visible != previous_visible:
+		if visible:
+			# 当界面变为可见时，更新存档显示
+			update_save_slots_display()
+		previous_visible = visible
 
 # 自动查找场景中的所有存档按钮并按页面组织
 func auto_find_all_buttons() -> void:
@@ -106,6 +117,8 @@ func _on_save_pressed() -> void:
 	if not current_slot_name == 'slot_null':
 		print('保存游戏')
 		save_game(current_slot_name)
+		# 更新对应按钮显示
+		update_specific_button_display(current_slot_name)
 	else:
 		print('未选中存档栏位')
 
@@ -114,6 +127,8 @@ func _on_delete_pressed() -> void:
 	if not current_slot_name == 'slot_null':
 		print('删除存档')
 		Dialogic.Save.delete_slot(current_slot_name)
+		# 更新对应按钮显示
+		update_specific_button_display(current_slot_name)
 	else:
 		print('未选中存档栏位')
 
@@ -136,3 +151,69 @@ func _on_next_pressed() -> void:
 		tab_container.current_tab = tab_container.current_tab + 1
 	page.text = str(tab_container.current_tab + 1)
 	print('当前页数',tab_container.current_tab + 1)
+
+
+func update_save_slots_display() -> void:
+	for page_index in range(save_pages.size()):
+		var page_buttons = save_pages[page_index]
+		
+		for button_index in range(page_buttons.size()):
+			var button = page_buttons[button_index] as Button
+			var global_button_index = page_index * total_buttons_per_page + button_index
+			var slot_name = "slot_%d" % (global_button_index + 1)
+			update_button_display(button, slot_name)
+
+
+func update_button_display(button: Button, slot_name: String) -> void:
+	if Dialogic.Save.has_slot(slot_name):
+		var save_info = Dialogic.Save.get_slot_info(slot_name)
+		
+		# 更新日期文本
+		var date_label = button.get_node("HBoxContainer/VBox/Date")
+		if date_label and save_info.has("date"):
+			date_label.text = 'Date ' + save_info["date"]
+		
+		# 更新对话文本
+		var text_label = button.get_node("HBoxContainer/VBox/Text")
+		if text_label and save_info.has("text"):
+			var display_text = save_info["text"]
+			if display_text.length() > 30:
+				display_text = display_text.substr(0, 30) + "..."
+			text_label.text = 'Text\n' + display_text
+		
+		# 更新缩略图
+		var texture_rect = button.get_node("HBoxContainer/TextureRect")
+		if texture_rect:
+			var thumbnail = Dialogic.Save.get_slot_thumbnail(slot_name)
+			if thumbnail:
+				texture_rect.texture = thumbnail
+	else:
+		# 没有存档时的默认状态
+		var date_label = button.get_node("HBoxContainer/VBox/Date")
+		if date_label:
+			date_label.text = "无存档"
+			
+		var text_label = button.get_node("HBoxContainer/VBox/Text")
+		if text_label:
+			text_label.text = "空槽位"
+			
+		# 清除纹理或设置默认纹理
+		var texture_rect = button.get_node("HBoxContainer/TextureRect")
+		if texture_rect:
+			texture_rect.texture = null  # 或者设置一个默认的"空存档"纹理
+
+#设置存档栏位预览图
+func set_button_texture(button: Button, texture: Texture2D) -> void:
+	var texture_rect = button.get_node("HBoxContainer/TextureRect")
+	if texture_rect:
+		texture_rect.texture = texture
+
+func update_specific_button_display(slot_name: String) -> void:
+	# 根据slot_name找出对应的按钮并更新显示
+	var slot_number = slot_name.split("_")[1].to_int()
+	var page_index = (slot_number - 1) / total_buttons_per_page
+	var button_index = (slot_number - 1) % total_buttons_per_page
+	
+	if page_index < save_pages.size() and button_index < save_pages[page_index].size():
+		var button = save_pages[page_index][button_index] as Button
+		update_button_display(button, slot_name)
