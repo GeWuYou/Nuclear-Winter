@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://do0wvegpfe6iy"]
+[gd_scene load_steps=33 format=3 uid="uid://do0wvegpfe6iy"]
 
 [ext_resource type="Script" uid="uid://yivwmkfwrvfr" path="res://addons/dialogic/Modules/DefaultLayoutParts/Base_Default/default_layout_base.gd" id="1_ifsho"]
 [ext_resource type="Script" uid="uid://ctog34kdg222q" path="res://addons/dialogic/Modules/Text/node_input.gd" id="2_1w6u4"]
@@ -6,18 +6,26 @@
 [ext_resource type="Script" uid="uid://bak74s0kcr0ao" path="res://addons/dialogic/Modules/Text/node_name_label.gd" id="2_t51uy"]
 [ext_resource type="Script" uid="uid://drhfq6rmdeuri" path="res://addons/dialogic/Modules/Text/node_dialog_text.gd" id="2_tofw2"]
 [ext_resource type="Texture2D" uid="uid://2tr56nk5q1hw" path="res://icon.svg" id="4_vdgkp"]
-[ext_resource type="Texture2D" uid="uid://bcsfypoe6fta2" path="res://assets/matrrial/test/快速加载.png" id="5_muvts"]
-[ext_resource type="Texture2D" uid="uid://44inmqpxskxa" path="res://assets/matrrial/test/加载.png" id="6_ric6y"]
-[ext_resource type="Texture2D" uid="uid://vr2kku7c2p1i" path="res://assets/matrrial/test/快速保存.png" id="7_1w6u4"]
-[ext_resource type="Texture2D" uid="uid://bsjwns4jlg5nn" path="res://assets/matrrial/test/保存.png" id="8_n7cp1"]
-[ext_resource type="Texture2D" uid="uid://ddlbnws5fkuvm" path="res://assets/matrrial/test/下个选项.png" id="9_d4psr"]
-[ext_resource type="Texture2D" uid="uid://dxofg7olwpjp" path="res://assets/matrrial/test/上个选项.png" id="10_f4cqb"]
-[ext_resource type="Texture2D" uid="uid://dsgavedaul4cd" path="res://assets/matrrial/test/历史记录.png" id="11_uxwi6"]
-[ext_resource type="Texture2D" uid="uid://bvneiltiw64d1" path="res://assets/matrrial/test/快进.png" id="12_iptxc"]
-[ext_resource type="Texture2D" uid="uid://dxx3hrrvcfk5k" path="res://assets/matrrial/test/自动模式.png" id="13_qba7y"]
+[ext_resource type="Texture2D" uid="uid://bcsfypoe6fta2" path="res://assets/material/test/快速加载.png" id="5_muvts"]
+[ext_resource type="Texture2D" uid="uid://44inmqpxskxa" path="res://assets/material/test/加载.png" id="6_ric6y"]
+[ext_resource type="Texture2D" uid="uid://vr2kku7c2p1i" path="res://assets/material/test/快速保存.png" id="7_1w6u4"]
+[ext_resource type="FontFile" uid="uid://did86pboqmqsy" path="res://assets/UI/MiSans-Normal.ttf" id="8_f4cqb"]
+[ext_resource type="Texture2D" uid="uid://bsjwns4jlg5nn" path="res://assets/material/test/保存.png" id="8_n7cp1"]
+[ext_resource type="Texture2D" uid="uid://qrrnw76shrmb" path="res://assets/UI/名称衬底.png" id="8_uxwi6"]
+[ext_resource type="Texture2D" uid="uid://ddlbnws5fkuvm" path="res://assets/material/test/下个选项.png" id="9_d4psr"]
+[ext_resource type="Texture2D" uid="uid://dxofg7olwpjp" path="res://assets/material/test/上个选项.png" id="10_f4cqb"]
+[ext_resource type="Texture2D" uid="uid://dsgavedaul4cd" path="res://assets/material/test/历史记录.png" id="11_uxwi6"]
+[ext_resource type="Texture2D" uid="uid://bvneiltiw64d1" path="res://assets/material/test/快进.png" id="12_iptxc"]
+[ext_resource type="Texture2D" uid="uid://dxx3hrrvcfk5k" path="res://assets/material/test/自动模式.png" id="13_qba7y"]
 [ext_resource type="Script" uid="uid://bldt7xlfum7ov" path="res://addons/dialogic/Modules/Choice/node_choice_button.gd" id="14_muvts"]
 [ext_resource type="Script" uid="uid://d0ptqnbudhkyj" path="res://addons/dialogic/Modules/Character/node_portrait_container.gd" id="17_n7cp1"]
 [ext_resource type="Resource" uid="uid://vm5he4iff3mv" path="res://resources/dialogue/character/妹妹_女1.dch" id="18_d4psr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4psr"]
+bg_color = Color(1, 1, 1, 0.78431374)
+
+[sub_resource type="Theme" id="Theme_f4cqb"]
+Panel/styles/panel = SubResource("StyleBoxFlat_d4psr")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1w6u4"]
 texture = ExtResource("4_vdgkp")
@@ -180,6 +188,7 @@ offset_top = -360.0
 offset_right = 960.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = SubResource("Theme_f4cqb")
 
 [node name="MarginContainer" type="MarginContainer" parent="文本框"]
 layout_mode = 1
@@ -198,6 +207,7 @@ script = ExtResource("2_ric6y")
 layout_mode = 2
 
 [node name="DialogicNode_NameLabel" type="Label" parent="文本框/MarginContainer/VBoxContainer"]
+z_index = 1
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 1
@@ -206,9 +216,16 @@ text = "名字"
 script = ExtResource("2_t51uy")
 metadata/_custom_type_script = "uid://bak74s0kcr0ao"
 
+[node name="Sprite2D" type="Sprite2D" parent="文本框/MarginContainer/VBoxContainer/DialogicNode_NameLabel"]
+z_index = -1
+position = Vector2(55, 24)
+texture = ExtResource("8_uxwi6")
+
 [node name="DialogicNode_DialogText" type="RichTextLabel" parent="文本框/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.034746442, 0.03474644, 0.03474644, 1)
+theme_override_fonts/normal_font = ExtResource("8_f4cqb")
 theme_override_font_sizes/normal_font_size = 32
 text = "文本
 1
