@@ -19,7 +19,7 @@
 &"portraits": {
 "1/立绘1": {
 "export_overrides": {
-"image": "\"res://assets/matrrial/test/1765023132473.jpg\""
+"image": "\"res://assets/material/test/1765023132473.jpg\""
 },
 "ignore_char_scale": true,
 "mirror": false,
@@ -29,7 +29,7 @@
 },
 "立绘2": {
 "export_overrides": {
-"image": "\"res://assets/matrrial/test/1765023132473.jpg\""
+"image": "\"res://assets/material/test/1765023132473.jpg\""
 },
 "ignore_char_scale": true,
 "mirror": false,
