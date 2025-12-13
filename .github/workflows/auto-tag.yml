@@ -14,6 +14,9 @@ jobs:
   auto-tag:
     name: Auto Increment Version and Create Tag
     runs-on: ubuntu-latest
+    concurrency:
+      group: auto-tag-${{ github.ref }}
+      cancel-in-progress: true
     # 条件判断：仅在推送事件或已合并的 PR 关闭事件中执行
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true)
     permissions:
@@ -89,11 +92,17 @@ jobs:
           set -e
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-
+          
+          # 检查远端是否已经存在该 tag
+          echo "Checking if tag $NEW_TAG already exists on origin..."
+          if git ls-remote --exit-code --tags "https://x-access-token:${PAT}@github.com/${REPO}.git" "refs/tags/${NEW_TAG}" >/dev/null 2>&1; then
+            echo "Tag $NEW_TAG already exists on remote — skipping creation."
+            exit 0
+          fi
+          
           echo "Creating annotated tag $NEW_TAG"
           git tag -a "$NEW_TAG" -m "Auto-generated tag: $NEW_TAG"
-
-          # 推送单个 tag，使用 PAT 作为 HTTPS token
+          
           echo "Pushing tag $NEW_TAG to origin using PAT"
           git push "https://x-access-token:${PAT}@github.com/${REPO}.git" "refs/tags/${NEW_TAG}"
       
