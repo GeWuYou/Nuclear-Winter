@@ -58,10 +58,20 @@ layout_mode = 2
 theme = ExtResource("1_fsom3")
 text = "开始游戏"
 
+[node name="loading" type="Button" parent="BoxContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_fsom3")
+text = "加载存档"
+
 [node name="setting" type="Button" parent="BoxContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_fsom3")
 text = "设置"
+
+[node name="credits" type="Button" parent="BoxContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_fsom3")
+text = "制作组"
 
 [node name="quit" type="Button" parent="BoxContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
@@ -69,5 +79,6 @@ theme = ExtResource("1_fsom3")
 text = "退出"
 
 [connection signal="pressed" from="BoxContainer/VBoxContainer2/VBoxContainer/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="BoxContainer/VBoxContainer2/VBoxContainer/loading" to="." method="_on_loading_pressed"]
 [connection signal="pressed" from="BoxContainer/VBoxContainer2/VBoxContainer/setting" to="." method="_on_setting_pressed"]
 [connection signal="pressed" from="BoxContainer/VBoxContainer2/VBoxContainer/quit" to="." method="_on_quit_pressed"]

@@ -20,6 +20,8 @@
 [ext_resource type="Script" uid="uid://bldt7xlfum7ov" path="res://addons/dialogic/Modules/Choice/node_choice_button.gd" id="14_muvts"]
 [ext_resource type="Script" uid="uid://d0ptqnbudhkyj" path="res://addons/dialogic/Modules/Character/node_portrait_container.gd" id="17_n7cp1"]
 [ext_resource type="Resource" uid="uid://vm5he4iff3mv" path="res://resources/dialogue/character/妹妹_女1.dch" id="18_d4psr"]
+[ext_resource type="PackedScene" uid="uid://ccjkjlabfwqsb" path="res://scenes/loading/loading.tscn" id="20_iptxc"]
+[ext_resource type="PackedScene" uid="uid://bakr3c1avvrkp" path="res://scenes/saving/saving.tscn" id="20_uxwi6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4psr"]
 bg_color = Color(1, 1, 1, 0.78431374)
@@ -136,42 +138,49 @@ theme_override_constants/separation = 10
 
 [node name="DialogicNode_ChoiceButton" type="Button" parent="选项"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "选项1"
 script = ExtResource("14_muvts")
 metadata/_custom_type_script = "uid://bldt7xlfum7ov"
 
 [node name="DialogicNode_ChoiceButton2" type="Button" parent="选项"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "选项2"
 script = ExtResource("14_muvts")
 metadata/_custom_type_script = "uid://bldt7xlfum7ov"
 
 [node name="DialogicNode_ChoiceButton3" type="Button" parent="选项"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "选项3"
 script = ExtResource("14_muvts")
 metadata/_custom_type_script = "uid://bldt7xlfum7ov"
 
 [node name="DialogicNode_ChoiceButton4" type="Button" parent="选项"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "选项4"
 script = ExtResource("14_muvts")
 metadata/_custom_type_script = "uid://bldt7xlfum7ov"
 
 [node name="DialogicNode_ChoiceButton5" type="Button" parent="选项"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "选项5"
 script = ExtResource("14_muvts")
 metadata/_custom_type_script = "uid://bldt7xlfum7ov"
 
 [node name="DialogicNode_ChoiceButton6" type="Button" parent="选项"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "选项6"
 script = ExtResource("14_muvts")
 metadata/_custom_type_script = "uid://bldt7xlfum7ov"
 
 [node name="DialogicNode_ChoiceButton7" type="Button" parent="选项"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "选项7"
 script = ExtResource("14_muvts")
 metadata/_custom_type_script = "uid://bldt7xlfum7ov"
@@ -197,9 +206,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 40
+theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 40
+theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 10
 script = ExtResource("2_ric6y")
 
@@ -298,6 +307,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_1w6u4")
 metadata/_custom_type_script = "uid://ctog34kdg222q"
+
+[node name="Loading" parent="." instance=ExtResource("20_iptxc")]
+visible = false
+
+[node name="Saving" parent="." instance=ExtResource("20_uxwi6")]
+visible = false
 
 [connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/System" to="文本框/MarginContainer" method="_on_system_pressed"]
 [connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/Qload" to="文本框/MarginContainer" method="_on_qload_pressed"]

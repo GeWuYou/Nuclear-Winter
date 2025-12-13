@@ -1,5 +1,7 @@
 extends MarginContainer
 
+@onready var saving: Control = $"../../Saving"
+@onready var loading: Control = $"../../Loading"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,21 +34,26 @@ func _on_system_pressed() -> void:
 
 func _on_qload_pressed() -> void:
 	print('快速加载')
+	Dialogic.Save.load('slot_Q')
 
 
 
 func _on_load_pressed() -> void:
 	print('加载')
+	loading.show()
 
 
 
 func _on_qsave_pressed() -> void:
 	print('快速保存')
+	Dialogic.Save.save('slot_Q')
 
 
 
 func _on_save_pressed() -> void:
 	print('保存')
+	Dialogic.Save.take_thumbnail() #截图
+	saving.show()
 
 
 
