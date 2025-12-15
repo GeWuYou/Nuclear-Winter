@@ -1,11 +1,10 @@
-[gd_scene load_steps=35 format=3 uid="uid://do0wvegpfe6iy"]
+[gd_scene load_steps=26 format=3 uid="uid://do0wvegpfe6iy"]
 
 [ext_resource type="Script" uid="uid://yivwmkfwrvfr" path="res://addons/dialogic/Modules/DefaultLayoutParts/Base_Default/default_layout_base.gd" id="1_ifsho"]
 [ext_resource type="Script" uid="uid://ctog34kdg222q" path="res://addons/dialogic/Modules/Text/node_input.gd" id="2_1w6u4"]
 [ext_resource type="Script" uid="uid://b4xt1jihxj2hy" path="res://resources/dialogue/style/DefaultLayoutBase/text_box.gd" id="2_ric6y"]
 [ext_resource type="Script" uid="uid://bak74s0kcr0ao" path="res://addons/dialogic/Modules/Text/node_name_label.gd" id="2_t51uy"]
 [ext_resource type="Script" uid="uid://drhfq6rmdeuri" path="res://addons/dialogic/Modules/Text/node_dialog_text.gd" id="2_tofw2"]
-[ext_resource type="Texture2D" uid="uid://2tr56nk5q1hw" path="res://icon.svg" id="4_vdgkp"]
 [ext_resource type="Texture2D" uid="uid://bcsfypoe6fta2" path="res://assets/material/test/快速加载.png" id="5_muvts"]
 [ext_resource type="Texture2D" uid="uid://44inmqpxskxa" path="res://assets/material/test/加载.png" id="6_ric6y"]
 [ext_resource type="Texture2D" uid="uid://vr2kku7c2p1i" path="res://assets/material/test/快速保存.png" id="7_1w6u4"]
@@ -14,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://qrrnw76shrmb" path="res://assets/UI/名称衬底.png" id="8_uxwi6"]
 [ext_resource type="Texture2D" uid="uid://ddlbnws5fkuvm" path="res://assets/material/test/下个选项.png" id="9_d4psr"]
 [ext_resource type="Texture2D" uid="uid://dxofg7olwpjp" path="res://assets/material/test/上个选项.png" id="10_f4cqb"]
+[ext_resource type="Theme" uid="uid://bvb33j4a3y40p" path="res://assets/UI/对话框下方选项.tres" id="11_4coyn"]
 [ext_resource type="Texture2D" uid="uid://dsgavedaul4cd" path="res://assets/material/test/历史记录.png" id="11_uxwi6"]
 [ext_resource type="Texture2D" uid="uid://bvneiltiw64d1" path="res://assets/material/test/快进.png" id="12_iptxc"]
 [ext_resource type="Texture2D" uid="uid://dxx3hrrvcfk5k" path="res://assets/material/test/自动模式.png" id="13_qba7y"]
@@ -22,42 +22,13 @@
 [ext_resource type="Resource" uid="uid://vm5he4iff3mv" path="res://resources/dialogue/character/妹妹_女1.dch" id="18_d4psr"]
 [ext_resource type="PackedScene" uid="uid://ccjkjlabfwqsb" path="res://scenes/loading/loading.tscn" id="20_iptxc"]
 [ext_resource type="PackedScene" uid="uid://bakr3c1avvrkp" path="res://scenes/saving/saving.tscn" id="20_uxwi6"]
+[ext_resource type="Texture2D" uid="uid://ohh0rihp35xj" path="res://assets/UI/对话框选项衬底.png" id="21_4coyn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4psr"]
 bg_color = Color(1, 1, 1, 0.78431374)
 
 [sub_resource type="Theme" id="Theme_f4cqb"]
 Panel/styles/panel = SubResource("StyleBoxFlat_d4psr")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1w6u4"]
-texture = ExtResource("4_vdgkp")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n7cp1"]
-texture = ExtResource("5_muvts")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d4psr"]
-texture = ExtResource("6_ric6y")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f4cqb"]
-texture = ExtResource("7_1w6u4")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uxwi6"]
-texture = ExtResource("8_n7cp1")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iptxc"]
-texture = ExtResource("9_d4psr")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qba7y"]
-texture = ExtResource("10_f4cqb")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4coyn"]
-texture = ExtResource("11_uxwi6")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_semk3"]
-texture = ExtResource("12_iptxc")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_00wj4"]
-texture = ExtResource("13_qba7y")
 
 [node name="DefaultLayoutBase" type="CanvasLayer"]
 script = ExtResource("1_ifsho")
@@ -247,66 +218,101 @@ metadata/_custom_type_script = "uid://drhfq6rmdeuri"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="文本框/MarginContainer/VBoxContainer"]
 z_index = 10
-custom_minimum_size = Vector2(0, 32)
+custom_minimum_size = Vector2(48, 48)
 layout_direction = 3
 layout_mode = 2
-theme_override_constants/separation = 30
+size_flags_horizontal = 4
+theme_override_constants/separation = 36
 
 [node name="System" type="Button" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 0)
+custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_1w6u4")
-
-[node name="Qload" type="Button" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_n7cp1")
+theme = ExtResource("11_4coyn")
+text = "设置"
+icon_alignment = 2
 
 [node name="Load" type="Button" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 0)
+custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_d4psr")
-
-[node name="Qsave" type="Button" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_f4cqb")
+theme = ExtResource("11_4coyn")
+theme_override_icons/icon = ExtResource("6_ric6y")
+text = "加载"
+icon_alignment = 2
 
 [node name="Save" type="Button" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 0)
+custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_uxwi6")
+theme = ExtResource("11_4coyn")
+theme_override_icons/icon = ExtResource("8_n7cp1")
+text = "保存"
+icon_alignment = 2
+
+[node name="Qload" type="Button" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+theme = ExtResource("11_4coyn")
+theme_override_icons/icon = ExtResource("5_muvts")
+text = "快速加载"
+icon_alignment = 2
+
+[node name="Qsave" type="Button" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+theme = ExtResource("11_4coyn")
+theme_override_icons/icon = ExtResource("7_1w6u4")
+text = "快速保存"
+icon_alignment = 2
 
 [node name="Next" type="Button" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 0)
+custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_iptxc")
+theme = ExtResource("11_4coyn")
+theme_override_icons/icon = ExtResource("9_d4psr")
+text = "下一个选项"
+icon_alignment = 2
 
 [node name="Last" type="Button" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 0)
+custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_qba7y")
+theme = ExtResource("11_4coyn")
+theme_override_icons/icon = ExtResource("10_f4cqb")
+text = "上一个选项"
+icon_alignment = 2
 
 [node name="Log" type="Button" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 0)
+custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_4coyn")
+theme = ExtResource("11_4coyn")
+theme_override_icons/icon = ExtResource("11_uxwi6")
+text = "历史"
+icon_alignment = 2
 
 [node name="Skip" type="Button" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 0)
+custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_semk3")
+theme = ExtResource("11_4coyn")
+theme_override_icons/icon = ExtResource("12_iptxc")
+text = "跳过"
+icon_alignment = 2
 
 [node name="Auto" type="Button" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 0)
+custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_00wj4")
+theme = ExtResource("11_4coyn")
+theme_override_icons/icon = ExtResource("13_qba7y")
+text = "自动"
+icon_alignment = 2
 
 [node name="DialogicNode_Input" type="Control" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_1w6u4")
 metadata/_custom_type_script = "uid://ctog34kdg222q"
+
+[node name="对话框选项衬底" type="Sprite2D" parent="文本框/MarginContainer/VBoxContainer"]
+position = Vector2(860, 332)
+texture = ExtResource("21_4coyn")
 
 [node name="Loading" parent="." instance=ExtResource("20_iptxc")]
 visible = false
@@ -315,10 +321,10 @@ visible = false
 visible = false
 
 [connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/System" to="文本框/MarginContainer" method="_on_system_pressed"]
-[connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/Qload" to="文本框/MarginContainer" method="_on_qload_pressed"]
 [connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/Load" to="文本框/MarginContainer" method="_on_load_pressed"]
-[connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/Qsave" to="文本框/MarginContainer" method="_on_qsave_pressed"]
 [connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/Save" to="文本框/MarginContainer" method="_on_save_pressed"]
+[connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/Qload" to="文本框/MarginContainer" method="_on_qload_pressed"]
+[connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/Qsave" to="文本框/MarginContainer" method="_on_qsave_pressed"]
 [connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/Next" to="文本框/MarginContainer" method="_on_next_pressed"]
 [connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/Last" to="文本框/MarginContainer" method="_on_return_pressed"]
 [connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/Log" to="文本框/MarginContainer" method="_on_log_pressed"]
