@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+SceneManager="*res://global/scene_manager.gd"
+MapManager="*res://global/map_manager.gd"
 
 [dialogic]
 
@@ -29,7 +31,7 @@ directories/dch_directory={
 "青梅_女2": "res://resources/dialogue/character/青梅_女2.dch"
 }
 directories/dtl_directory={
-"test_timeline": "res://resources/dialogue/timeline/test_timeline.dtl",
+"test_timeline": "res://resources/dialogue/timeline/test/test_timeline.dtl",
 "序章1": "res://resources/dialogue/timeline/序章/序章1.dtl"
 }
 layout/style_directory={

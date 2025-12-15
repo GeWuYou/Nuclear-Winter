@@ -1,0 +1,150 @@
+[gd_scene load_steps=2 format=3 uid="uid://imbqrxx46lxx"]
+
+[ext_resource type="Script" uid="uid://d0u371q33aerd" path="res://scenes/map/map.gd" id="1_sxf4j"]
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_sxf4j")
+
+[node name="避难所" type="Button" parent="."]
+offset_left = 276.0
+offset_top = 371.0
+offset_right = 404.0
+offset_bottom = 483.0
+text = "避难所"
+metadata/_edit_group_ = true
+
+[node name="地点背景" type="TextureRect" parent="避难所"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="角色立绘" type="TextureRect" parent="避难所"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="修道院" type="Button" parent="."]
+offset_left = 557.0
+offset_top = 197.0
+offset_right = 685.0
+offset_bottom = 309.0
+text = "修道院"
+metadata/_edit_group_ = true
+
+[node name="地点背景" type="TextureRect" parent="修道院"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="角色立绘" type="TextureRect" parent="修道院"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="郊区" type="Button" parent="."]
+offset_left = 1204.0
+offset_top = 635.0
+offset_right = 1332.0
+offset_bottom = 747.0
+text = "郊区"
+metadata/_edit_group_ = true
+
+[node name="地点背景" type="TextureRect" parent="郊区"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="角色立绘" type="TextureRect" parent="郊区"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="市区" type="Button" parent="."]
+offset_left = 717.0
+offset_top = 455.0
+offset_right = 845.0
+offset_bottom = 567.0
+text = "市区"
+metadata/_edit_group_ = true
+
+[node name="地点背景" type="TextureRect" parent="市区"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="角色立绘" type="TextureRect" parent="市区"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="乡镇" type="Button" parent="."]
+offset_left = 477.0
+offset_top = 859.0
+offset_right = 605.0
+offset_bottom = 971.0
+text = "乡镇"
+metadata/_edit_group_ = true
+
+[node name="地点背景" type="TextureRect" parent="乡镇"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="角色立绘" type="TextureRect" parent="乡镇"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="森林" type="Button" parent="."]
+offset_left = 1635.0
+offset_top = 531.0
+offset_right = 1763.0
+offset_bottom = 643.0
+text = "森林"
+metadata/_edit_group_ = true
+
+[node name="地点背景" type="TextureRect" parent="森林"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="角色立绘" type="TextureRect" parent="森林"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,4 +1,5 @@
 测试开始
+do SceneManager.test()
 set {Love_points.Heroine_1} = 0
 set {Love_points.Heroine_2} = 0
 set {Love_points.Heroine_3} = 0
@@ -31,6 +32,7 @@ label 选择1
 	set {Love_points.Heroine_2} += 1.0
 	set {Love_points.Heroine_3} += 1.0
 	脑子里随便一想的意淫成真了，被救出的天降美少女爱上了你，虽然物资比较紧缺，但你们四个人在避难所过上了没羞没躁的日子
+	do MapManager.set_map_configuration("修道院+青梅", "避难所+妹妹")
 - 不救，我是怂货，外面是谁和我有什么关系
 	set {Love_points.Heroine_1} += 1.0
 	避难所的生活虽然单调但足够三个人生存，你与妹妹和青梅过上了没羞没躁的日子
