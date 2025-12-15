@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://do0wvegpfe6iy"]
+[gd_scene load_steps=35 format=3 uid="uid://do0wvegpfe6iy"]
 
 [ext_resource type="Script" uid="uid://yivwmkfwrvfr" path="res://addons/dialogic/Modules/DefaultLayoutParts/Base_Default/default_layout_base.gd" id="1_ifsho"]
 [ext_resource type="Script" uid="uid://ctog34kdg222q" path="res://addons/dialogic/Modules/Text/node_input.gd" id="2_1w6u4"]
@@ -220,14 +220,14 @@ z_index = 1
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 48
 text = "名字"
 script = ExtResource("2_t51uy")
 metadata/_custom_type_script = "uid://bak74s0kcr0ao"
 
 [node name="Sprite2D" type="Sprite2D" parent="文本框/MarginContainer/VBoxContainer/DialogicNode_NameLabel"]
 z_index = -1
-position = Vector2(55, 24)
+position = Vector2(93, 36)
 texture = ExtResource("8_uxwi6")
 
 [node name="DialogicNode_DialogText" type="RichTextLabel" parent="文本框/MarginContainer/VBoxContainer"]
@@ -235,7 +235,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.034746442, 0.03474644, 0.03474644, 1)
 theme_override_fonts/normal_font = ExtResource("8_f4cqb")
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 48
 text = "文本
 1
 1

@@ -7,3 +7,5 @@ test_character: 123456
 - 22
 	22
 	set {Love_points.Heroine_1} += 1.0
+leave --All-- [length="0.0"]
+do MapManager.set_map_configuration("修道院+青梅", "避难所+妹妹")

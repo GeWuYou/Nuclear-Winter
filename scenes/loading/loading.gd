@@ -114,7 +114,7 @@ func _on_back_pressed() -> void:
 
 
 func _on_load_pressed() -> void:
-	if not current_slot_name == 'slot_null':
+	if not current_slot_name == 'slot_null' and Dialogic.Save.has_slot(current_slot_name):
 		print('加载存档')
 		load_game(current_slot_name)
 		var current_scene_path = get_tree().current_scene.scene_file_path
