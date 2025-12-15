@@ -1,0 +1,32 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bvb33j4a3y40p"]
+
+[ext_resource type="FontFile" uid="uid://did86pboqmqsy" path="res://assets/UI/MiSans-Normal.ttf" id="1_3w8d4"]
+[ext_resource type="Texture2D" uid="uid://2tr56nk5q1hw" path="res://icon.svg" id="2_eujrq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xd4l8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3w8d4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eujrq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rkqlw"]
+
+[resource]
+Button/colors/font_color = Color(0.42352942, 0.54901963, 0.84705883, 1)
+Button/colors/font_focus_color = Color(0.3647059, 0.49019608, 0.8039216, 1)
+Button/colors/font_hover_color = Color(0.627451, 0.7372549, 0.9529412, 1)
+Button/colors/font_hover_pressed_color = Color(0.30930814, 0.43580002, 0.75070214, 1)
+Button/colors/font_pressed_color = Color(0.28369063, 0.40716642, 0.71769434, 1)
+Button/colors/icon_focus_color = Color(0.42352942, 0.54901963, 0.84705883, 1)
+Button/colors/icon_hover_color = Color(0.6257028, 0.7385783, 0.9520144, 1)
+Button/colors/icon_hover_pressed_color = Color(0.30930814, 0.43580002, 0.75070214, 1)
+Button/colors/icon_normal_color = Color(0.42352942, 0.54901963, 0.84705883, 1)
+Button/colors/icon_pressed_color = Color(0.30930814, 0.43580002, 0.75070214, 1)
+Button/constants/icon_max_width = 24
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_3w8d4")
+Button/icons/icon = ExtResource("2_eujrq")
+Button/styles/focus = SubResource("StyleBoxEmpty_xd4l8")
+Button/styles/hover = SubResource("StyleBoxEmpty_3w8d4")
+Button/styles/normal = SubResource("StyleBoxEmpty_eujrq")
+Button/styles/pressed = SubResource("StyleBoxEmpty_rkqlw")
