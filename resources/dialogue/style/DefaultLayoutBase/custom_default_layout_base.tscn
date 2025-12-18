@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://do0wvegpfe6iy"]
+[gd_scene load_steps=31 format=3 uid="uid://do0wvegpfe6iy"]
 
 [ext_resource type="Script" uid="uid://yivwmkfwrvfr" path="res://addons/dialogic/Modules/DefaultLayoutParts/Base_Default/default_layout_base.gd" id="1_ifsho"]
 [ext_resource type="Script" uid="uid://ctog34kdg222q" path="res://addons/dialogic/Modules/Text/node_input.gd" id="2_1w6u4"]
@@ -6,16 +6,20 @@
 [ext_resource type="Script" uid="uid://bak74s0kcr0ao" path="res://addons/dialogic/Modules/Text/node_name_label.gd" id="2_t51uy"]
 [ext_resource type="Script" uid="uid://drhfq6rmdeuri" path="res://addons/dialogic/Modules/Text/node_dialog_text.gd" id="2_tofw2"]
 [ext_resource type="Texture2D" uid="uid://bcsfypoe6fta2" path="res://assets/material/test/快速加载.png" id="5_muvts"]
+[ext_resource type="Theme" uid="uid://0x8pqwhub6pp" path="res://assets/UI/对话分支选项.tres" id="5_semk3"]
 [ext_resource type="Texture2D" uid="uid://44inmqpxskxa" path="res://assets/material/test/加载.png" id="6_ric6y"]
 [ext_resource type="Texture2D" uid="uid://vr2kku7c2p1i" path="res://assets/material/test/快速保存.png" id="7_1w6u4"]
+[ext_resource type="FontFile" uid="uid://dxxw7x1e4n0a2" path="res://assets/UI/抖音美好体.otf" id="8_00wj4"]
 [ext_resource type="FontFile" uid="uid://did86pboqmqsy" path="res://assets/UI/MiSans-Normal.ttf" id="8_f4cqb"]
 [ext_resource type="Texture2D" uid="uid://bsjwns4jlg5nn" path="res://assets/material/test/保存.png" id="8_n7cp1"]
 [ext_resource type="Texture2D" uid="uid://qrrnw76shrmb" path="res://assets/UI/名称衬底.png" id="8_uxwi6"]
 [ext_resource type="Texture2D" uid="uid://ddlbnws5fkuvm" path="res://assets/material/test/下个选项.png" id="9_d4psr"]
 [ext_resource type="Texture2D" uid="uid://dxofg7olwpjp" path="res://assets/material/test/上个选项.png" id="10_f4cqb"]
+[ext_resource type="Texture2D" uid="uid://cl738pfuefinm" path="res://assets/UI/名称衬底2.png" id="11_1w8jo"]
 [ext_resource type="Theme" uid="uid://bvb33j4a3y40p" path="res://assets/UI/对话框下方选项.tres" id="11_4coyn"]
 [ext_resource type="Texture2D" uid="uid://dsgavedaul4cd" path="res://assets/material/test/历史记录.png" id="11_uxwi6"]
 [ext_resource type="Texture2D" uid="uid://bvneiltiw64d1" path="res://assets/material/test/快进.png" id="12_iptxc"]
+[ext_resource type="Texture2D" uid="uid://dg2uomqxnesct" path="res://assets/UI/名称衬底3.png" id="12_j7wys"]
 [ext_resource type="Texture2D" uid="uid://dxx3hrrvcfk5k" path="res://assets/material/test/自动模式.png" id="13_qba7y"]
 [ext_resource type="Script" uid="uid://bldt7xlfum7ov" path="res://addons/dialogic/Modules/Choice/node_choice_button.gd" id="14_muvts"]
 [ext_resource type="Script" uid="uid://d0ptqnbudhkyj" path="res://addons/dialogic/Modules/Character/node_portrait_container.gd" id="17_n7cp1"]
@@ -23,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://ccjkjlabfwqsb" path="res://scenes/loading/loading.tscn" id="20_iptxc"]
 [ext_resource type="PackedScene" uid="uid://bakr3c1avvrkp" path="res://scenes/saving/saving.tscn" id="20_uxwi6"]
 [ext_resource type="Texture2D" uid="uid://ohh0rihp35xj" path="res://assets/UI/对话框选项衬底.png" id="21_4coyn"]
+[ext_resource type="Texture2D" uid="uid://ssmm3ypmq3qa" path="res://assets/art/Image_1766048043554_489.jpg" id="28_5k366"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4psr"]
 bg_color = Color(1, 1, 1, 0.78431374)
@@ -105,10 +110,11 @@ offset_bottom = 138.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 30
 
 [node name="DialogicNode_ChoiceButton" type="Button" parent="选项"]
 layout_mode = 2
+theme = ExtResource("5_semk3")
 theme_override_font_sizes/font_size = 32
 text = "选项1"
 script = ExtResource("14_muvts")
@@ -116,6 +122,7 @@ metadata/_custom_type_script = "uid://bldt7xlfum7ov"
 
 [node name="DialogicNode_ChoiceButton2" type="Button" parent="选项"]
 layout_mode = 2
+theme = ExtResource("5_semk3")
 theme_override_font_sizes/font_size = 32
 text = "选项2"
 script = ExtResource("14_muvts")
@@ -123,6 +130,7 @@ metadata/_custom_type_script = "uid://bldt7xlfum7ov"
 
 [node name="DialogicNode_ChoiceButton3" type="Button" parent="选项"]
 layout_mode = 2
+theme = ExtResource("5_semk3")
 theme_override_font_sizes/font_size = 32
 text = "选项3"
 script = ExtResource("14_muvts")
@@ -130,6 +138,7 @@ metadata/_custom_type_script = "uid://bldt7xlfum7ov"
 
 [node name="DialogicNode_ChoiceButton4" type="Button" parent="选项"]
 layout_mode = 2
+theme = ExtResource("5_semk3")
 theme_override_font_sizes/font_size = 32
 text = "选项4"
 script = ExtResource("14_muvts")
@@ -137,6 +146,7 @@ metadata/_custom_type_script = "uid://bldt7xlfum7ov"
 
 [node name="DialogicNode_ChoiceButton5" type="Button" parent="选项"]
 layout_mode = 2
+theme = ExtResource("5_semk3")
 theme_override_font_sizes/font_size = 32
 text = "选项5"
 script = ExtResource("14_muvts")
@@ -144,6 +154,7 @@ metadata/_custom_type_script = "uid://bldt7xlfum7ov"
 
 [node name="DialogicNode_ChoiceButton6" type="Button" parent="选项"]
 layout_mode = 2
+theme = ExtResource("5_semk3")
 theme_override_font_sizes/font_size = 32
 text = "选项6"
 script = ExtResource("14_muvts")
@@ -151,6 +162,7 @@ metadata/_custom_type_script = "uid://bldt7xlfum7ov"
 
 [node name="DialogicNode_ChoiceButton7" type="Button" parent="选项"]
 layout_mode = 2
+theme = ExtResource("5_semk3")
 theme_override_font_sizes/font_size = 32
 text = "选项7"
 script = ExtResource("14_muvts")
@@ -191,15 +203,30 @@ z_index = 1
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("8_00wj4")
 theme_override_font_sizes/font_size = 48
-text = "名字"
+text = "男主/女主"
 script = ExtResource("2_t51uy")
 metadata/_custom_type_script = "uid://bak74s0kcr0ao"
 
 [node name="Sprite2D" type="Sprite2D" parent="文本框/MarginContainer/VBoxContainer/DialogicNode_NameLabel"]
+visible = false
 z_index = -1
-position = Vector2(93, 36)
+position = Vector2(105.5, 28)
+scale = Vector2(1.1019417, 1)
 texture = ExtResource("8_uxwi6")
+
+[node name="名称衬底2" type="Sprite2D" parent="文本框/MarginContainer/VBoxContainer/DialogicNode_NameLabel"]
+z_index = -1
+position = Vector2(176, 28.000008)
+scale = Vector2(1.0755814, 1.0755814)
+texture = ExtResource("11_1w8jo")
+
+[node name="名称衬底3" type="Sprite2D" parent="文本框/MarginContainer/VBoxContainer/DialogicNode_NameLabel"]
+visible = false
+z_index = -1
+position = Vector2(167, 27)
+texture = ExtResource("12_j7wys")
 
 [node name="DialogicNode_DialogText" type="RichTextLabel" parent="文本框/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -216,22 +243,27 @@ text = "文本
 script = ExtResource("2_tofw2")
 metadata/_custom_type_script = "uid://drhfq6rmdeuri"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="文本框/MarginContainer/VBoxContainer"]
+[node name="Blank" type="Control" parent="文本框/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="文本框/MarginContainer"]
 z_index = 10
 custom_minimum_size = Vector2(48, 48)
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 8
 theme_override_constants/separation = 36
 
-[node name="System" type="Button" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="System" type="Button" parent="文本框/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 theme = ExtResource("11_4coyn")
 text = "设置"
 icon_alignment = 2
 
-[node name="Load" type="Button" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Load" type="Button" parent="文本框/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 theme = ExtResource("11_4coyn")
@@ -239,7 +271,7 @@ theme_override_icons/icon = ExtResource("6_ric6y")
 text = "加载"
 icon_alignment = 2
 
-[node name="Save" type="Button" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Save" type="Button" parent="文本框/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 theme = ExtResource("11_4coyn")
@@ -247,7 +279,7 @@ theme_override_icons/icon = ExtResource("8_n7cp1")
 text = "保存"
 icon_alignment = 2
 
-[node name="Qload" type="Button" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Qload" type="Button" parent="文本框/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 theme = ExtResource("11_4coyn")
@@ -255,7 +287,7 @@ theme_override_icons/icon = ExtResource("5_muvts")
 text = "快速加载"
 icon_alignment = 2
 
-[node name="Qsave" type="Button" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Qsave" type="Button" parent="文本框/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 theme = ExtResource("11_4coyn")
@@ -263,7 +295,7 @@ theme_override_icons/icon = ExtResource("7_1w6u4")
 text = "快速保存"
 icon_alignment = 2
 
-[node name="Next" type="Button" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Next" type="Button" parent="文本框/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 theme = ExtResource("11_4coyn")
@@ -271,7 +303,7 @@ theme_override_icons/icon = ExtResource("9_d4psr")
 text = "下一个选项"
 icon_alignment = 2
 
-[node name="Last" type="Button" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Last" type="Button" parent="文本框/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 theme = ExtResource("11_4coyn")
@@ -279,7 +311,7 @@ theme_override_icons/icon = ExtResource("10_f4cqb")
 text = "上一个选项"
 icon_alignment = 2
 
-[node name="Log" type="Button" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Log" type="Button" parent="文本框/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 theme = ExtResource("11_4coyn")
@@ -287,7 +319,7 @@ theme_override_icons/icon = ExtResource("11_uxwi6")
 text = "历史"
 icon_alignment = 2
 
-[node name="Skip" type="Button" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Skip" type="Button" parent="文本框/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 theme = ExtResource("11_4coyn")
@@ -295,7 +327,7 @@ theme_override_icons/icon = ExtResource("12_iptxc")
 text = "跳过"
 icon_alignment = 2
 
-[node name="Auto" type="Button" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Auto" type="Button" parent="文本框/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 theme = ExtResource("11_4coyn")
@@ -303,15 +335,16 @@ theme_override_icons/icon = ExtResource("13_qba7y")
 text = "自动"
 icon_alignment = 2
 
-[node name="DialogicNode_Input" type="Control" parent="文本框/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="DialogicNode_Input" type="Control" parent="文本框/MarginContainer/HBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_1w6u4")
 metadata/_custom_type_script = "uid://ctog34kdg222q"
 
-[node name="对话框选项衬底" type="Sprite2D" parent="文本框/MarginContainer/VBoxContainer"]
-position = Vector2(860, 332)
+[node name="对话框选项衬底" type="Sprite2D" parent="文本框/MarginContainer/HBoxContainer"]
+z_index = -1
+position = Vector2(782, 50)
 texture = ExtResource("21_4coyn")
 
 [node name="Loading" parent="." instance=ExtResource("20_iptxc")]
@@ -320,13 +353,18 @@ visible = false
 [node name="Saving" parent="." instance=ExtResource("20_uxwi6")]
 visible = false
 
-[connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/System" to="文本框/MarginContainer" method="_on_system_pressed"]
-[connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/Load" to="文本框/MarginContainer" method="_on_load_pressed"]
-[connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/Save" to="文本框/MarginContainer" method="_on_save_pressed"]
-[connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/Qload" to="文本框/MarginContainer" method="_on_qload_pressed"]
-[connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/Qsave" to="文本框/MarginContainer" method="_on_qsave_pressed"]
-[connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/Next" to="文本框/MarginContainer" method="_on_next_pressed"]
-[connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/Last" to="文本框/MarginContainer" method="_on_return_pressed"]
-[connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/Log" to="文本框/MarginContainer" method="_on_log_pressed"]
-[connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/Skip" to="文本框/MarginContainer" method="_on_skip_pressed"]
-[connection signal="pressed" from="文本框/MarginContainer/VBoxContainer/HBoxContainer/Auto" to="文本框/MarginContainer" method="_on_auto_pressed"]
+[node name="Image1766048043554489" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(960, 540)
+texture = ExtResource("28_5k366")
+
+[connection signal="pressed" from="文本框/MarginContainer/HBoxContainer/System" to="文本框/MarginContainer" method="_on_system_pressed"]
+[connection signal="pressed" from="文本框/MarginContainer/HBoxContainer/Load" to="文本框/MarginContainer" method="_on_load_pressed"]
+[connection signal="pressed" from="文本框/MarginContainer/HBoxContainer/Save" to="文本框/MarginContainer" method="_on_save_pressed"]
+[connection signal="pressed" from="文本框/MarginContainer/HBoxContainer/Qload" to="文本框/MarginContainer" method="_on_qload_pressed"]
+[connection signal="pressed" from="文本框/MarginContainer/HBoxContainer/Qsave" to="文本框/MarginContainer" method="_on_qsave_pressed"]
+[connection signal="pressed" from="文本框/MarginContainer/HBoxContainer/Next" to="文本框/MarginContainer" method="_on_next_pressed"]
+[connection signal="pressed" from="文本框/MarginContainer/HBoxContainer/Last" to="文本框/MarginContainer" method="_on_return_pressed"]
+[connection signal="pressed" from="文本框/MarginContainer/HBoxContainer/Log" to="文本框/MarginContainer" method="_on_log_pressed"]
+[connection signal="pressed" from="文本框/MarginContainer/HBoxContainer/Skip" to="文本框/MarginContainer" method="_on_skip_pressed"]
+[connection signal="pressed" from="文本框/MarginContainer/HBoxContainer/Auto" to="文本框/MarginContainer" method="_on_auto_pressed"]
