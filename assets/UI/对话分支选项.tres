@@ -1,0 +1,47 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://0x8pqwhub6pp"]
+
+[ext_resource type="FontFile" uid="uid://did86pboqmqsy" path="res://assets/UI/MiSans-Normal.ttf" id="1_ivrh3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_semk3"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.42352942, 0.54901963, 0.84705883, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_00wj4"]
+bg_color = Color(0.42352942, 0.54901963, 0.84705883, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4coyn"]
+bg_color = Color(0.9982317, 0.9982318, 0.9982318, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[resource]
+Button/colors/font_color = Color(0.2051171, 0.20511758, 0.20511723, 1)
+Button/fonts/font = ExtResource("1_ivrh3")
+Button/styles/focus = SubResource("StyleBoxFlat_semk3")
+Button/styles/hover = SubResource("StyleBoxFlat_00wj4")
+Button/styles/normal = SubResource("StyleBoxFlat_4coyn")
